@@ -48,11 +48,6 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
 
-    #check if an existing owner was selected
-    if params[:pet][:owner_id]
-      @pet.owner_id = params[:pet][:owner_id].join
-    end
-
     #check and override if a new owner was chosen
     if !params["owner"]["name"].empty?
       @pet.owner = Owner.create(name: params["owner"]["name"])
