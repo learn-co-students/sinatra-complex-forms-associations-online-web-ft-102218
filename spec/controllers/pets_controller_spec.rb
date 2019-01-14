@@ -35,12 +35,13 @@ describe "Pets Controller" do
       fill_in "pet_name", :with => "Michael"
       check(@owner1.id)
       click_button "Create Pet"
+
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
     end
 
-      it " creates a new pet and a new owner" do
+    it " creates a new pet and a new owner" do
       visit '/pets/new'
       fill_in "pet_name", :with => "Pippa"
       fill_in "owner_name", :with => "Mary Nelson"
@@ -93,6 +94,7 @@ describe "Pets Controller" do
       visit "/pets/#{@pet.id}/edit"
       choose(@adam.id)
       click_button "Update Pet"
+
       expect(Pet.last.owner.name).to eq("Adam")
     end
 
